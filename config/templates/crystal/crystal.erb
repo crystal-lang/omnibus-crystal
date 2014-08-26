@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+export CRYSTAL_PATH="src:libs:<%= install_dir %>/src:<%= install_dir %>/libs"
+export PATH="<%= install_dir %>/embedded/bin:$PATH"
+"<%= install_dir %>/embedded/bin/crystal" "$@"
