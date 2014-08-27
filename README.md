@@ -16,6 +16,11 @@ Usage
 -----
 ### Build
 
+Make sure to create and have permissions to the following directories:
+
+* `/opt/crystal`
+* `/var/cache`
+
 You create a platform-specific package using the `build project` command:
 
 ```shell
