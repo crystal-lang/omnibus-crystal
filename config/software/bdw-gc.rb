@@ -8,7 +8,7 @@ dependency "libatomic_ops"
 
 relative_path "gc-#{version}"
 
-env = with_standard_compiler_flags
+env = with_standard_compiler_flags(with_embedded_path)
 
 build do
   command "./configure" \
