@@ -16,6 +16,7 @@ build do
   command "./configure" \
           " --disable-debug" \
           " --disable-dependency-tracking" \
+          " --disable-shared" \
           " --prefix=#{install_dir}/embedded", env: env
 
 
