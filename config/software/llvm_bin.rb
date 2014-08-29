@@ -13,12 +13,16 @@ elsif ubuntu? && _64_bit?
   relative_path 'clang+llvm-3.3-amd64-Ubuntu-12.04.2'
 end
 
+BINARIES = %w(clang llvm-config opt llc)
 
+BINARIES.each do |bin|
+  whitelist_file bin
+end
 
 build do
   copy "#{project_dir}/lib/libLLVM*.a", "#{install_dir}/embedded/lib/"
 
-  %w(clang llvm-config opt llc).each do |bin|
+  BINARIES.each do |bin|
     copy "#{project_dir}/bin/#{bin}", "#{install_dir}/embedded/bin/#{bin}"
   end
 end

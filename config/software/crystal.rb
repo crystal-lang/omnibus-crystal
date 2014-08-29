@@ -7,11 +7,14 @@ dependency "openssl"
 dependency "pcre"
 dependency "bdw-gc"
 dependency "llvm_bin"
+dependency "libunwind" unless mac_os_x?
+
+env = with_standard_compiler_flags(with_embedded_path(
+  "LIBRARY_PATH" => "#{install_dir}/embedded/lib"
+))
 
 build do
-  env = with_standard_compiler_flags(with_embedded_path(
-    "LIBRARY_PATH" => "#{install_dir}/embedded/lib"
-  ))
+  patch source: "boehm_cr_pthread.patch"
 
   command "bin/crystal --setup"
   command "make clean crystal", env: env
