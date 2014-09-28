@@ -1,27 +1,22 @@
 name "llvm"
-default_version "3.4.2"
+default_version "3.5.0"
 
-source :url => "http://llvm.org/releases/3.4.2/llvm-3.4.2.src.tar.gz",
-       :md5 => "a20669f75967440de949ac3b1bad439c"
+source :url => "http://llvm.org/releases/3.5.0/llvm-3.5.0.src.tar.xz",
+       :md5 => "d6987305a1a0e58e128c1374cd3b8fef"
 
-dependency "clang"
-relative_path 'llvm-3.4.2.src'
-
-whitelist_file "lib/BugpointPasses.dylib"
-whitelist_file "lib/libclang.dylib"
-whitelist_file "lib/libLTO.dylib"
-whitelist_file "lib/LLVMHello.dylib"
+relative_path "llvm-#{version}.src"
 
 env = with_standard_compiler_flags
 
 build do
-  clang = Omnibus::Software.load(project, "clang")
-  copy clang.project_dir, "#{project_dir}/tools/clang"
-
   command "./configure" \
           " --enable-targets=host" \
-          " --prefix=#{install_dir}/embedded", env: env
+          " --disable-terminfo" \
+          " --disable-libffi" \
+          " --disable-docs" \
+          " --prefix=/opt/llvm35" \
+          " --disable-assertions", env: env
 
-  make "-j #{workers}"
+  make "-j #{workers}", env: env
   make "install"
 end

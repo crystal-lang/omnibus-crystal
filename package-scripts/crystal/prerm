@@ -12,4 +12,6 @@ function error_exit
   exit 1
 }
 
+rm -f /usr/bin/crystal
+
 exit 0

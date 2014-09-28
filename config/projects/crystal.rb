@@ -2,10 +2,9 @@ name 'crystal'
 maintainer 'Juan Wajnerman'
 homepage 'http://crystal-lang.org/'
 
-install_dir     '/opt/crystal'
+install_dir '/opt/crystal'
 build_version do
-  source :git, from_dependency: 'crystal'
-  output_format :semver
+  source :version, from_dependency: 'crystal'
 end
 build_iteration 1
 

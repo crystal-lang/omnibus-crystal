@@ -17,9 +17,6 @@
 name "pcre"
 default_version "8.31"
 
-dependency "libedit"
-dependency "ncurses"
-
 source url: "http://iweb.dl.sourceforge.net/project/pcre/pcre/#{version}/pcre-#{version}.tar.gz",
        md5: "fab1bb3b91a4c35398263a5c1e0858c1"
 
@@ -31,7 +28,7 @@ build do
   command "./configure" \
           " --prefix=#{install_dir}/embedded" \
           " --disable-shared" \
-          " --enable-pcretest-libedit", env: env
+          " --enable-utf8", env: env
 
   make "-j #{workers}", env: env
   make "install", env: env
