@@ -20,7 +20,7 @@ build do
   patch source: "lib_crypto_cr.patch"
 
   mkdir "#{project_dir}/deps"
-  copy "/home/vagrant/crystal", "#{project_dir}/deps/crystal"
+  copy "#{Dir.pwd}/crystal-#{ohai['os']}", "#{project_dir}/deps/crystal"
   command "make clean crystal release=1", env: env
 
   block do
