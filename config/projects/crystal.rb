@@ -8,14 +8,9 @@ build_version do
 end
 build_iteration 1
 
-# creates required build directories
 dependency 'preparation'
-
-# crystal dependencies/components
 dependency 'crystal'
-
-# version manifest file
-dependency 'version-manifest'
+dependency 'tgz_package'
 
 exclude '\.git*'
 exclude 'bundler\/git'
