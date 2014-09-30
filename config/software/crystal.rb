@@ -16,6 +16,7 @@ llvm_bin = Omnibus::Software.load(project, "llvm_bin")
 env["PATH"] = "#{env["PATH"]}:#{llvm_bin.project_dir}/bin"
 
 build do
+  command "git checkout .", cwd: project_dir
   patch source: "boehm_cr_pthread.patch"
   patch source: "lib_crypto_cr.patch"
 
