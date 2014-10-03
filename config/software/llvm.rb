@@ -10,7 +10,7 @@ whitelist_file "lib/BugpointPasses.dylib"
 whitelist_file "lib/libLTO.dylib"
 whitelist_file "lib/LLVMHello.dylib"
 
-env = with_standard_compiler_flags
+env = with_standard_compiler_flags(with_embedded_path)
 
 build do
   patch source: 'PR20800.patch', plevel: 0
@@ -18,6 +18,7 @@ build do
           " --enable-targets=host" \
           " --disable-terminfo" \
           " --disable-libffi" \
+          " --disable-zlib" \
           " --disable-docs" \
           " --prefix=#{install_dir}" \
           " --disable-shared" \
