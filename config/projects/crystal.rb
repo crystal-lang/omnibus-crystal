@@ -8,7 +8,6 @@ build_version do
 end
 build_iteration 2
 
-dependency 'preparation'
 dependency 'crystal'
 dependency 'tgz_package' if mac_os_x? || centos?
 

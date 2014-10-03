@@ -32,6 +32,7 @@ build do
   sync "#{project_dir}/src", "#{install_dir}/src"
   sync "#{project_dir}/libs", "#{install_dir}/libs"
   sync "#{project_dir}/samples", "#{install_dir}/samples"
+  mkdir "#{install_dir}/bin"
 
   erb source: "crystal.erb",
       dest: "#{install_dir}/bin/crystal",
