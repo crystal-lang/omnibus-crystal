@@ -13,7 +13,7 @@ env = with_standard_compiler_flags(with_embedded_path(
 ))
 
 llvm_bin = Omnibus::Software.load(project, "llvm_bin")
-env["PATH"] = "#{env["PATH"]}:#{llvm_bin.project_dir}/bin"
+env["PATH"] = "#{llvm_bin.project_dir}/bin:#{env["PATH"]}"
 
 build do
   command "git checkout .", cwd: project_dir

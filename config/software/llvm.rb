@@ -6,15 +6,22 @@ source :url => "http://llvm.org/releases/3.5.0/llvm-3.5.0.src.tar.xz",
 
 relative_path "llvm-#{version}.src"
 
+whitelist_file "lib/BugpointPasses.dylib"
+whitelist_file "lib/libLTO.dylib"
+whitelist_file "lib/LLVMHello.dylib"
+
 env = with_standard_compiler_flags
 
 build do
+  patch source: 'PR20800.patch', plevel: 0
   command "./configure" \
           " --enable-targets=host" \
           " --disable-terminfo" \
           " --disable-libffi" \
           " --disable-docs" \
-          " --prefix=/opt/llvm35" \
+          " --prefix=#{install_dir}" \
+          " --disable-shared" \
+          " --enable-optimized" \
           " --disable-assertions", env: env
 
   make "-j #{workers}", env: env
