@@ -5,9 +5,6 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.define("precise64") { |c| c.vm.box = "ubuntu/precise64" }
-  config.vm.define("trusty64") { |c| c.vm.box = "ubuntu/trusty64" }
-
   config.vm.define("debian") do |c|
     c.vm.box = "chef/debian-7.4"
 
