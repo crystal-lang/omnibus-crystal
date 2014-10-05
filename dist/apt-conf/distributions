@@ -1,0 +1,7 @@
+Origin: dist.crystal-lang.org
+Label: Crystal apt repository
+Codename: crystal
+Architectures: i386 amd64
+Components: main
+Description: Crystal apt repository
+SignWith: 7CC06B54
