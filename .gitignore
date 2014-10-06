@@ -9,3 +9,4 @@ bin/*
 files/**/cache/
 vendor/cookbooks
 dist/apt/
+dist/rpm/

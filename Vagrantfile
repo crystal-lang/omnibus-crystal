@@ -26,6 +26,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     c.vm.box = "chef/centos-6.5"
 
     c.vm.provision :shell, inline: %(
+      echo "%_signature gpg" > ~/.rpmmacros
+      echo "%_gpg_name 7CC06B54" >> ~/.rpmmacros
+
       echo "Installing devtoolset-1.1"
       wget -q http://people.centos.org/tru/devtools-1.1/devtools-1.1.repo -P /etc/yum.repos.d
       echo "enabled=1" >> /etc/yum.repos.d/devtools-1.1.repo
