@@ -1,9 +1,0 @@
-diff --git a/src/gc/boehm.cr b/src/gc/boehm.cr
-index e8cbb14..a72c190 100644
---- a/src/gc/boehm.cr
-+++ b/src/gc/boehm.cr
-@@ -1,3 +1,4 @@
-+@[Link("pthread")]
- @[Link("gc")]
- lib LibGC
-   fun init = GC_init

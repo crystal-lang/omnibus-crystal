@@ -1,5 +1,5 @@
 name "crystal"
-default_version "0.5.0"
+default_version "0.5.1"
 
 source git: "https://github.com/manastech/crystal"
 
@@ -13,12 +13,11 @@ env = with_standard_compiler_flags(with_embedded_path(
 ))
 
 llvm_bin = Omnibus::Software.load(project, "llvm_bin")
-env["PATH"] = "#{llvm_bin.project_dir}/bin:#{env["PATH"]}"
+env["PATH"] = "#{llvm_bin.project_dir}/bin:#{project_dir}/deps:#{env["PATH"]}"
+env["CRYSTAL_PATH"] = "#{project_dir}/src:#{project_dir}/libs"
 
 build do
   command "git checkout .", cwd: project_dir
-  patch source: "boehm_cr_pthread.patch"
-  patch source: "lib_crypto_cr.patch"
 
   mkdir "#{project_dir}/deps"
   copy "#{Dir.pwd}/crystal-#{ohai['os']}", "#{project_dir}/deps/crystal"
