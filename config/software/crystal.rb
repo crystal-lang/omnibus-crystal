@@ -1,5 +1,5 @@
 name "crystal"
-default_version "0.5.2"
+default_version "0.5.3"
 
 source git: "https://github.com/manastech/crystal"
 

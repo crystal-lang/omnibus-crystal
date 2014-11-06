@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       curl -sSL https://get.rvm.io | bash -s stable --ruby
 
       echo "Preparing omnibus"
-      apt-get -q -y  install git
+      apt-get -q -y  install git reprepro dpkg-sig
       mkdir -p /var/lib/bundle
       mount -o bind /var/lib/bundle /vagrant/.bundle
       cd /vagrant
@@ -38,7 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       curl -sSL https://get.rvm.io | bash -s stable --ruby
 
       echo "Preparing omnibus"
-      yum install -q -y git xz rpm-build fakeroot
+      yum install -q -y git xz rpm-build fakeroot createrepo
       mkdir -p /var/lib/bundle
       mount -o bind /var/lib/bundle /vagrant/.bundle
       cd /vagrant
