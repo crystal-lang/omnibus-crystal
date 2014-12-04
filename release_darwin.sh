@@ -3,3 +3,4 @@
 bundle
 brew unlink llvm
 brew unlink crystal
+bundle exec omnibus build crystal
