@@ -25,6 +25,13 @@ build do
 
   block do
     raise "Could not build crystal" unless File.exists?("#{project_dir}/.build/crystal")
+
+    if mac_os_x?
+      otool_libs = `otool -L #{project_dir}/.build/crystal`
+      if otool_libs.include?("/usr/local/lib")
+        raise "Found local libraries linked to the generated compiler:\n#{otool_libs}"
+      end
+    end
   end
 
   copy "#{project_dir}/.build/crystal", "#{install_dir}/embedded/bin/crystal"
