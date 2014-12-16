@@ -4,5 +4,5 @@ rvmsudo bash
 cd /vagrant
 bundle
 bundle exec omnibus build crystal
-# ./dist/add-deb.sh pkg/crystal_<<version>>_amd64.deb
+# sudo ./dist/add-deb.sh pkg/crystal_<<version>>_amd64.deb
 # ./dist/sync (after all)

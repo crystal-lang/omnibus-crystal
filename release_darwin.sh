@@ -3,4 +3,5 @@
 bundle
 brew uninstall llvm
 brew uninstall crystal
+brew uninstall bdw-gc
 bundle exec omnibus build crystal

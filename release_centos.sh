@@ -5,5 +5,5 @@ cd /vagrant
 scl enable devtoolset-1.1 bash
 bundle
 bundle exec omnibus build crystal
-# ./dist/add-rpm.sh pkg/crystal-<version>-1.x86_64.rpm
+# sudo ./dist/add-rpm.sh pkg/crystal-<version>-1.x86_64.rpm
 # ./dist/sync (after all)

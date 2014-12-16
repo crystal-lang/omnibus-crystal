@@ -1,5 +1,5 @@
 name "crystal"
-default_version "0.5.4"
+default_version "0.5.5"
 
 source git: "https://github.com/manastech/crystal"
 
@@ -13,30 +13,28 @@ env = with_standard_compiler_flags(with_embedded_path(
 ))
 
 llvm_bin = Omnibus::Software.load(project, "llvm_bin")
+output_bin = "#{install_dir}/embedded/bin/crystal"
 env["PATH"] = "#{llvm_bin.project_dir}/bin:#{project_dir}/deps:#{env["PATH"]}"
-env["CRYSTAL_PATH"] = "#{project_dir}/src:#{project_dir}/libs"
+env["CRYSTAL_PATH"] = "#{project_dir}/src"
 
 build do
   command "git checkout .", cwd: project_dir
 
   mkdir "#{project_dir}/deps"
-  copy "#{Dir.pwd}/crystal-#{ohai['os']}", "#{project_dir}/deps/crystal"
-  command "make clean crystal release=1", env: env
+  command "#{Dir.pwd}/crystal-#{ohai['os']} src/compiler/crystal.cr --release -o #{output_bin}", env: env
 
   block do
-    raise "Could not build crystal" unless File.exists?("#{project_dir}/.build/crystal")
+    raise "Could not build crystal" unless File.exists?(output_bin)
 
     if mac_os_x?
-      otool_libs = `otool -L #{project_dir}/.build/crystal`
+      otool_libs = `otool -L #{output_bin}`
       if otool_libs.include?("/usr/local/lib")
         raise "Found local libraries linked to the generated compiler:\n#{otool_libs}"
       end
     end
   end
 
-  copy "#{project_dir}/.build/crystal", "#{install_dir}/embedded/bin/crystal"
   sync "#{project_dir}/src", "#{install_dir}/src"
-  sync "#{project_dir}/libs", "#{install_dir}/libs"
   sync "#{project_dir}/samples", "#{install_dir}/samples"
   mkdir "#{install_dir}/bin"
 

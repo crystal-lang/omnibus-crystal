@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 INSTALL_DIR="$(dirname $(readlink $0 || echo $0))/.."
-export CRYSTAL_PATH="src:libs:$INSTALL_DIR/src:$INSTALL_DIR/libs"
+export CRYSTAL_PATH="libs:$INSTALL_DIR/src"
 export PATH="$INSTALL_DIR/embedded/bin:$PATH"
 export LIBRARY_PATH="$INSTALL_DIR/embedded/lib"
 ${CRYSTAL_BIN:-"$INSTALL_DIR/embedded/bin/crystal"} "$@"
