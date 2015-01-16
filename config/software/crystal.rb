@@ -1,5 +1,5 @@
 name "crystal"
-default_version "0.5.5"
+default_version "0.5.8"
 
 source git: "https://github.com/manastech/crystal"
 
@@ -18,10 +18,10 @@ env["PATH"] = "#{llvm_bin.project_dir}/bin:#{project_dir}/deps:#{env["PATH"]}"
 env["CRYSTAL_PATH"] = "#{project_dir}/src"
 
 build do
-  command "git checkout .", cwd: project_dir
+  command "git checkout 0.5.8", cwd: project_dir
 
   mkdir "#{project_dir}/deps"
-  command "#{Dir.pwd}/crystal-#{ohai['os']} src/compiler/crystal.cr --release -o #{output_bin}", env: env
+  command "#{Dir.pwd}/crystal-#{ohai['os']} build src/compiler/crystal.cr --release -o #{output_bin}", env: env
 
   block do
     raise "Could not build crystal" unless File.exists?(output_bin)
