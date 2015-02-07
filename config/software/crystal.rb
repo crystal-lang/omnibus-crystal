@@ -1,5 +1,5 @@
 name "crystal"
-default_version "0.5.8"
+default_version "0.5.9"
 
 source git: "https://github.com/manastech/crystal"
 
@@ -18,7 +18,7 @@ env["PATH"] = "#{llvm_bin.project_dir}/bin:#{project_dir}/deps:#{env["PATH"]}"
 env["CRYSTAL_PATH"] = "#{project_dir}/src"
 
 build do
-  command "git checkout 0.5.8", cwd: project_dir
+  command "git checkout 0.5.9", cwd: project_dir
 
   mkdir "#{project_dir}/deps"
   command "#{Dir.pwd}/crystal-#{ohai['os']} build src/compiler/crystal.cr --release -o #{output_bin}", env: env

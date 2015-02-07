@@ -6,4 +6,3 @@ scl enable devtoolset-1.1 bash
 bundle
 bundle exec omnibus build crystal
 # sudo ./dist/add-rpm.sh pkg/crystal-<version>-1.x86_64.rpm
-# ./dist/sync (after all)
