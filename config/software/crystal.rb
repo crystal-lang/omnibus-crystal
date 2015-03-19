@@ -9,6 +9,8 @@ dependency "pcre"
 dependency "bdw-gc"
 dependency "llvm_bin"
 dependency "libunwind" unless mac_os_x?
+dependency "libpcl"
+dependency "libevent"
 
 env = with_standard_compiler_flags(with_embedded_path(
   "LIBRARY_PATH" => "#{install_dir}/embedded/lib"

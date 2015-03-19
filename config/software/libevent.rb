@@ -1,13 +1,14 @@
-name "libpcl"
-default_version "1.12"
+name "libevent"
+default_version "2.0.22"
 
-source url: "http://xmailserver.org/pcl-#{version}.tar.gz",
-       md5: "816d394743d8ab1b3e20af1efebb093d"
+source url: "https://github.com/libevent/libevent/archive/release-#{version}-stable.tar.gz",
+       md5: "8913ef56ec329f2c046007bd634c7201"
 
-relative_path "pcl-#{version}"
+relative_path "libevent-release-#{version}-stable"
 env = with_standard_compiler_flags(with_embedded_path)
 
 build do
+  command "./autogen.sh"
   command "./configure" \
           " --disable-dependency-tracking" \
           " --disable-shared" \
