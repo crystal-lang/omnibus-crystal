@@ -1,4 +1,4 @@
-CRYSTAL_VERSION = "0.6.1"
+CRYSTAL_VERSION = "0.7.1"
 
 name "crystal"
 default_version CRYSTAL_VERSION
@@ -20,6 +20,7 @@ llvm_bin = Omnibus::Software.load(project, "llvm_bin")
 output_bin = "#{install_dir}/embedded/bin/crystal"
 env["PATH"] = "#{llvm_bin.project_dir}/bin:#{project_dir}/deps:#{env["PATH"]}"
 env["CRYSTAL_PATH"] = "#{project_dir}/src"
+# env["CRYSTAL_PATH"] = "/private/var/cache/omnibus/src/crystal/src"
 
 build do
   command "git checkout #{CRYSTAL_VERSION}", cwd: project_dir

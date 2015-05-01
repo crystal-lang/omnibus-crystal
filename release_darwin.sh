@@ -5,4 +5,6 @@ bundle
 brew uninstall llvm
 brew uninstall crystal
 brew uninstall bdw-gc
+brew uninstall libpcl
+brew uninstall libevent
 bundle exec omnibus build crystal
