@@ -1,4 +1,4 @@
-CRYSTAL_VERSION = "0.7.2"
+CRYSTAL_VERSION = "0.7.5"
 
 name "crystal"
 default_version CRYSTAL_VERSION
@@ -30,7 +30,7 @@ build do
   command "git checkout #{CRYSTAL_VERSION}", cwd: project_dir
 
   mkdir "#{project_dir}/deps"
-  command "#{Dir.pwd}/crystal-#{ohai['os']} build src/compiler/crystal.cr --release -o #{output_bin}", env: env
+  command "#{Dir.pwd}/crystal-#{ohai['os']}-#{ohai['kernel']['machine']} build src/compiler/crystal.cr --release -o #{output_bin}", env: env
 
   block do
     raise "Could not build crystal" unless File.exists?(output_bin)
