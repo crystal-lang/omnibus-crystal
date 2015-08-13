@@ -1,4 +1,4 @@
-CRYSTAL_VERSION = "0.7.5"
+CRYSTAL_VERSION = "0.7.6"
 
 name "crystal"
 default_version CRYSTAL_VERSION

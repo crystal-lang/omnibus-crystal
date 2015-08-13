@@ -3,7 +3,7 @@
 # 2. For the first run, comment any reference to llvm_bin from config/software/crystal.rb
 bundle
 brew uninstall llvm
-brew uninstall crystal
+brew uninstall crystal-lang
 brew uninstall bdw-gc
 brew uninstall libpcl
 brew uninstall libevent
