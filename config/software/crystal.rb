@@ -1,4 +1,4 @@
-CRYSTAL_VERSION = "0.7.6"
+CRYSTAL_VERSION = "0.7.7"
 
 name "crystal"
 default_version CRYSTAL_VERSION
@@ -44,6 +44,7 @@ build do
   end
 
   sync "#{project_dir}/src", "#{install_dir}/src"
+  sync "#{project_dir}/etc", "#{install_dir}/etc"
   sync "#{project_dir}/samples", "#{install_dir}/samples"
   mkdir "#{install_dir}/bin"
 
