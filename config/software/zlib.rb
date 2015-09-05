@@ -34,6 +34,7 @@ build do
   # up the embedded libtool instead of the system libtool which the zlib
   # configure script cannot handle.
   env = with_standard_compiler_flags
+  env["CFLAGS"] << " -fPIC"
 
   # For some reason zlib needs this flag on solaris (cargocult warning?)
   env['CFLAGS'] << " -DNO_VIZ" if solaris2?

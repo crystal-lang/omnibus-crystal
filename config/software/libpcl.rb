@@ -6,6 +6,7 @@ source url: "http://xmailserver.org/pcl-#{version}.tar.gz",
 
 relative_path "pcl-#{version}"
 env = with_standard_compiler_flags(with_embedded_path)
+env["CFLAGS"] << " -fPIC"
 
 build do
   command "./configure" \

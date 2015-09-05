@@ -66,7 +66,7 @@ build do
           }
         else
           {
-            "CFLAGS" => "-I#{install_dir}/embedded/include",
+            "CFLAGS" => "-I#{install_dir}/embedded/include -fPIC",
             "LDFLAGS" => "-Wl,-rpath,#{install_dir}/embedded/lib -L#{install_dir}/embedded/lib"
           }
         end

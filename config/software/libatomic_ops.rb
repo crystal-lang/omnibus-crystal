@@ -7,6 +7,7 @@ source :url => "http://www.ivmaisoft.com/_bin/atomic_ops/libatomic_ops-7.4.2.tar
 relative_path 'libatomic_ops-7.4.2'
 
 env = with_standard_compiler_flags
+env["CFLAGS"] << " -fPIC"
 
 build do
   command "./configure" \

@@ -7,6 +7,7 @@ source url: "http://download.savannah.gnu.org/releases/libunwind/libunwind-#{ver
 relative_path "libunwind-#{version}"
 
 env = with_standard_compiler_flags(with_embedded_path)
+env["CFLAGS"] << " -fPIC"
 
 build do
   command "./configure" \
