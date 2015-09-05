@@ -5,3 +5,6 @@
 1. Run the commented procedures of each of the release_*.sh files
 1. Run ./dist/sync.sh
 1. Change version and shasum in homembrew_crystal project.
+
+Note: If the initial build fails with git complaining there's no HEAD, remove the llvm_bin dependency
+from config/software/crystal.rb, run the build again and let fail and then undo the changes and try again.
