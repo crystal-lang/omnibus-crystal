@@ -5,18 +5,23 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  [%w(debian chef/debian-7.4), %w(debian32 chef/debian-7.4-i386)].each do |name, box|
+  [%w(debian bento/debian-7.8), %w(debian32 bento/debian-7.8-i386)].each do |name, box|
     config.vm.define(name) do |c|
       c.vm.box = box
 
       c.vm.provision :shell, inline: %(
+        set -e
         echo "Installing rvm and ruby"
         export DEBIAN_FRONTEND=noninteractive
-        gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+        curl -#LO https://rvm.io/mpapis.asc
+        gpg --import mpapis.asc
         curl -sSL https://get.rvm.io | bash -s stable --ruby
+        source /usr/local/rvm/scripts/rvm
+        rvm use ruby --default
+        gem install bundler
 
         echo "Preparing omnibus"
-        apt-get -q -y  install git reprepro dpkg-sig
+        apt-get -q -y  install git reprepro dpkg-sig fakeroot
         mkdir -p /var/lib/bundle
         mount -o bind /var/lib/bundle /vagrant/.bundle
         cd /vagrant
@@ -25,11 +30,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
-  [%w(centos chef/centos-6.5), %w(centos32 chef/centos-6.5-i386)].each do |name, box|
+  [%w(centos bento/centos-6.7), %w(centos32 bento/centos-6.7-i386)].each do |name, box|
     config.vm.define(name) do |c|
       c.vm.box = box
 
       c.vm.provision :shell, inline: %(
+        set -e
         echo "%_signature gpg" > ~/.rpmmacros
         echo "%_gpg_name 7CC06B54" >> ~/.rpmmacros
 
@@ -39,8 +45,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         yum install -q -y devtoolset-1.1
 
         echo "Installing rvm and ruby"
-        gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+        curl -#LO https://rvm.io/mpapis.asc
+        gpg --import mpapis.asc
         curl -sSL https://get.rvm.io | bash -s stable --ruby
+        source /usr/local/rvm/scripts/rvm
+        rvm use ruby --default
+        gem install bundler
 
         echo "Preparing omnibus"
         yum install -q -y git xz rpm-build fakeroot createrepo

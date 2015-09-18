@@ -9,6 +9,7 @@ dependency "libatomic_ops"
 relative_path "gc-#{version}"
 
 env = with_standard_compiler_flags(with_embedded_path)
+env["CFLAGS"] << " -fPIC"
 
 build do
   command "./configure" \

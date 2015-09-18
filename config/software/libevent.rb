@@ -6,6 +6,7 @@ source url: "https://github.com/libevent/libevent/archive/release-#{version}-sta
 
 relative_path "libevent-release-#{version}-stable"
 env = with_standard_compiler_flags(with_embedded_path)
+env["CFLAGS"] << " -fPIC"
 
 build do
   command "./autogen.sh"

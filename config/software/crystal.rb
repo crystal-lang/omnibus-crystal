@@ -15,6 +15,7 @@ dependency "libevent"
 env = with_standard_compiler_flags(with_embedded_path(
   "LIBRARY_PATH" => "#{install_dir}/embedded/lib"
 ))
+env["CFLAGS"] << " -fPIC"
 
 llvm_bin = Omnibus::Software.load(project, "llvm_bin")
 output_bin = "#{install_dir}/embedded/bin/crystal"
