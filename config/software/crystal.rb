@@ -1,4 +1,4 @@
-CRYSTAL_VERSION = "0.7.7"
+CRYSTAL_VERSION = "0.8.0"
 
 name "crystal"
 default_version CRYSTAL_VERSION
@@ -8,7 +8,6 @@ source git: "https://github.com/manastech/crystal"
 dependency "pcre"
 dependency "bdw-gc"
 dependency "llvm_bin"
-dependency "libunwind" unless mac_os_x?
 dependency "libpcl"
 dependency "libevent"
 
@@ -31,6 +30,7 @@ build do
   command "git checkout #{CRYSTAL_VERSION}", cwd: project_dir
 
   mkdir "#{project_dir}/deps"
+  command "make llvm_ext", env: env
   command "#{Dir.pwd}/crystal-#{ohai['os']}-#{ohai['kernel']['machine']} build src/compiler/crystal.cr --release -o #{output_bin}", env: env
 
   block do
