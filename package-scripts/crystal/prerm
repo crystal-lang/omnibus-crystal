@@ -12,6 +12,6 @@ function error_exit
   exit 1
 }
 
-rm -f /usr/bin/crystal
+rm -f /usr/bin/crystal /usr/bin/shards
 
 exit 0

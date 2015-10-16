@@ -13,5 +13,6 @@ function error_exit
 }
 
 ln -nfs /opt/crystal/bin/crystal /usr/bin/crystal
+ln -nfs /opt/crystal/embedded/bin/shards /usr/bin/shards
 
 exit 0
