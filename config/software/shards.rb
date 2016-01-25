@@ -1,11 +1,11 @@
 name "shards"
-default_version "0.5.4"
+default_version "0.6.0"
 
 dependency "crystal"
 dependency "libyaml"
 
 source url: "https://github.com/ysbaddaden/shards/archive/v#{version}.tar.gz",
-       md5: "810474011a6a30cac63e6e81700875df"
+       md5: "ea753adaf47e624a416dad2ec9f4e1af"
 
 relative_path "shards-#{version}"
 env = with_standard_compiler_flags(with_embedded_path)

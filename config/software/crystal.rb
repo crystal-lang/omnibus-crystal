@@ -1,4 +1,4 @@
-CRYSTAL_VERSION = "0.10.1"
+CRYSTAL_VERSION = "0.11.0"
 
 name "crystal"
 default_version CRYSTAL_VERSION
@@ -8,7 +8,6 @@ source git: "https://github.com/manastech/crystal"
 dependency "pcre"
 dependency "bdw-gc"
 dependency "llvm_bin"
-dependency "libpcl"
 dependency "libevent"
 
 env = with_standard_compiler_flags(with_embedded_path(
