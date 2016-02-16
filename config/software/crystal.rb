@@ -1,4 +1,4 @@
-CRYSTAL_VERSION = "0.11.1"
+CRYSTAL_VERSION = "0.12.0"
 
 name "crystal"
 default_version CRYSTAL_VERSION
@@ -29,7 +29,7 @@ build do
   command "git checkout #{CRYSTAL_VERSION}", cwd: project_dir
 
   mkdir "#{project_dir}/deps"
-  command "make llvm_ext", env: env
+  command "make deps", env: env
   command "#{Dir.pwd}/crystal-#{ohai['os']}-#{ohai['kernel']['machine']} build src/compiler/crystal.cr --release -o #{output_bin}", env: env
 
   block do
