@@ -3,7 +3,7 @@ CRYSTAL_VERSION = "0.12.0"
 name "crystal"
 default_version CRYSTAL_VERSION
 
-source git: "https://github.com/manastech/crystal"
+source git: "https://github.com/crystal-lang/crystal"
 
 dependency "pcre"
 dependency "bdw-gc"
