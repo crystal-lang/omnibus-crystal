@@ -5,6 +5,7 @@ build do
   block do
     destination = File.expand_path('pkg', Omnibus::Config.project_root)
     version = "#{project.build_version}-#{project.build_iteration}"
+    version.gsub!("/", "-")
     tgz_name = "#{project.name}-#{version}-#{ohai['os']}-#{ohai['kernel']['machine']}.tar.gz"
     if mac_os_x?
       transform = "-s /./#{project.name}-#{version}/"

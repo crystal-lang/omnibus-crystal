@@ -1,4 +1,5 @@
-CRYSTAL_VERSION = "0.12.0"
+CRYSTAL_VERSION = "0.14.0"
+FIRST_RUN = ENV["FIRST_RUN"]
 
 name "crystal"
 default_version CRYSTAL_VERSION
@@ -7,7 +8,7 @@ source git: "https://github.com/crystal-lang/crystal"
 
 dependency "pcre"
 dependency "bdw-gc"
-dependency "llvm_bin"
+dependency "llvm_bin" unless FIRST_RUN
 dependency "libevent"
 
 env = with_standard_compiler_flags(with_embedded_path(
@@ -15,9 +16,17 @@ env = with_standard_compiler_flags(with_embedded_path(
 ))
 env["CFLAGS"] << " -fPIC"
 
-llvm_bin = Omnibus::Software.load(project, "llvm_bin")
+unless FIRST_RUN
+  llvm_bin = Omnibus::Software.load(project, "llvm_bin")
+end
+
 output_bin = "#{install_dir}/embedded/bin/crystal"
-env["PATH"] = "#{llvm_bin.project_dir}/bin:#{project_dir}/deps:#{env["PATH"]}"
+
+if FIRST_RUN
+  env["PATH"] = "#{project_dir}/deps:#{env["PATH"]}"
+else
+  env["PATH"] = "#{llvm_bin.project_dir}/bin:#{project_dir}/deps:#{env["PATH"]}"
+end
 
 if mac_os_x?
   env["CRYSTAL_PATH"] = "/private/var/cache/omnibus/src/crystal/src"
@@ -30,7 +39,7 @@ build do
 
   mkdir "#{project_dir}/deps"
   command "make deps", env: env
-  command "#{Dir.pwd}/crystal-#{ohai['os']}-#{ohai['kernel']['machine']} build src/compiler/crystal.cr --release -o #{output_bin}", env: env
+  command "#{Dir.pwd}/crystal-#{ohai['os']}-#{ohai['kernel']['machine']} build src/compiler/crystal.cr --release -o #{output_bin} -D without_openssl -D without_zlib", env: env
 
   block do
     raise "Could not build crystal" unless File.exists?(output_bin)
