@@ -32,6 +32,13 @@ where the `build project` command is invoked. For example, running this command
 on a MacBook Pro will generate a Mac OS X package. After the build completes
 packages will be available in the `pkg/` folder.
 
+#### Troubleshooting
+
+- If the initial build fails with git complaining there's no HEAD, run the build setting the environment variable `FIRST_RUN`, run the build again and let it fail, and then unset the variable and try again.
+- If autoreconf fails with: `Can't exec "aclocal": Permission denied at .../autoconf/Autom4te/FileUtils.pm line 326`, then reinstall autoconf and automake from source by running `brew reinstall autoconf automake --build-from-source`.
+- If the build fails because `llvm_config` is not found, either install llvm35 via `brew install llvm35`, or link the `llvm` package.
+- If compiling crystal fails, make sure to download the crystal binary from GitHub and place it as crystal-darwin-x86_64, crystal-linux-x86_64 and crystal-linux-i686.
+
 ### Clean
 
 You can clean up all temporary files generated during the build process with
