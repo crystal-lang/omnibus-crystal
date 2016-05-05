@@ -1,4 +1,4 @@
-CRYSTAL_VERSION = "0.15.0"
+CRYSTAL_VERSION = "0.16.0"
 FIRST_RUN = ENV["FIRST_RUN"]
 
 name "crystal"
@@ -39,7 +39,10 @@ build do
 
   mkdir "#{project_dir}/deps"
   command "make deps", env: env
-  command "#{Dir.pwd}/crystal-#{ohai['os']}-#{ohai['kernel']['machine']} build src/compiler/crystal.cr --release -o #{output_bin} -D without_openssl -D without_zlib", env: env
+  command "mkdir .build", env: env
+  command "echo #{Dir.pwd}", env: env
+  command "cp #{Dir.pwd}/crystal-#{ohai['os']}-#{ohai['kernel']['machine']} .build/crystal", env: env
+  command "bin/crystal build src/compiler/crystal.cr --release -o #{output_bin} -D without_openssl -D without_zlib", env: env
 
   block do
     raise "Could not build crystal" unless File.exists?(output_bin)
