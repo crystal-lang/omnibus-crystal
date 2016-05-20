@@ -1,4 +1,4 @@
-CRYSTAL_VERSION = "0.17.1"
+CRYSTAL_VERSION = "0.17.3"
 FIRST_RUN = ENV["FIRST_RUN"]
 
 name "crystal"
