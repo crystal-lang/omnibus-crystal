@@ -29,6 +29,7 @@ build do
   command "./configure" \
           " --prefix=#{install_dir}/embedded" \
           " --disable-shared" \
+          " --enable-unicode-properties" \
           " --enable-utf8", env: env
 
   make "-j #{workers}", env: env
