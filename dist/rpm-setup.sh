@@ -2,7 +2,7 @@
 cat > /etc/yum.repos.d/crystal.repo <<END
 [crystal]
 name = Crystal
-baseurl = http://dist.crystal-lang.org/rpm/
+baseurl = https://dist.crystal-lang.org/rpm/
 END
 
-rpm --import http://dist.crystal-lang.org/rpm/RPM-GPG-KEY
+rpm --import https://dist.crystal-lang.org/rpm/RPM-GPG-KEY
