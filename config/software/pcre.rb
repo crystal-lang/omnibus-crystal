@@ -17,7 +17,7 @@
 name "pcre"
 default_version "8.31"
 
-source url: "http://iweb.dl.sourceforge.net/project/pcre/pcre/#{version}/pcre-#{version}.tar.gz",
+source url: "http://downloads.sourceforge.net/project/pcre/pcre/#{version}/pcre-#{version}.tar.gz",
        md5: "fab1bb3b91a4c35398263a5c1e0858c1"
 
 relative_path "pcre-#{version}"
