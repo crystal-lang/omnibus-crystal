@@ -65,7 +65,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "~/.gnupg", "/root/.gnupg", owner: "root", group: "root", type: "rsync"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = 4096
+    vb.memory = 8192
     vb.cpus = 8
   end
 end
