@@ -10,9 +10,9 @@ bundle exec omnibus build crystal
 # centos
 rvmsudo bash
 cd /vagrant
-sudo ./dist/add-rpm.sh pkg/crystal-0.20.3-1.x86_64.rpm
+sudo ./dist/add-rpm.sh pkg/crystal-0.20.4-1.x86_64.rpm
 
 # centos32
 rvmsudo bash
 cd /vagrant
-sudo ./dist/add-rpm.sh pkg/crystal-0.20.3-1.i686.rpm
+sudo ./dist/add-rpm.sh pkg/crystal-0.20.4-1.i686.rpm

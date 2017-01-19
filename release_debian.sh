@@ -9,9 +9,9 @@ bundle exec omnibus build crystal
 # debian
 rvmsudo bash
 cd /vagrant
-sudo ./dist/add-deb.sh pkg/crystal_0.20.3-1_amd64.deb
+sudo ./dist/add-deb.sh pkg/crystal_0.20.4-1_amd64.deb
 
 # debian32
 rvmsudo bash
 cd /vagrant
-sudo ./dist/add-deb.sh pkg/crystal_0.20.3-1_i386.deb
+sudo ./dist/add-deb.sh pkg/crystal_0.20.4-1_i386.deb
