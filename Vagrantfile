@@ -39,6 +39,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         echo "%_signature gpg" > ~/.rpmmacros
         echo "%_gpg_name 7CC06B54" >> ~/.rpmmacros
 
+        # IUS provides newer git, compatible with our Omnibus https://ius.io/
+        curl -sSL https://setup.ius.io/ | sudo bash
+
         echo "Installing devtoolset-1.1"
         wget -q http://people.centos.org/tru/devtools-1.1/devtools-1.1.repo -P /etc/yum.repos.d
         echo "enabled=1" >> /etc/yum.repos.d/devtools-1.1.repo
@@ -53,7 +56,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         gem install bundler
 
         echo "Preparing omnibus"
-        yum install -q -y git xz rpm-build fakeroot createrepo
+        yum install -q -y git2u xz rpm-build fakeroot createrepo
         mkdir -p /var/lib/bundle
         mount -o bind /var/lib/bundle /vagrant/.bundle
         cd /vagrant
