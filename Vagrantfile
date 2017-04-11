@@ -68,7 +68,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "~/.gnupg", "/root/.gnupg", owner: "root", group: "root", type: "rsync"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = 8192
+    # TODO assign different amounts to 32-bit VMs
+    vb.memory = 12288
     vb.cpus = 8
   end
 end
