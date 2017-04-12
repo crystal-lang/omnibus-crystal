@@ -56,7 +56,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         gem install bundler
 
         echo "Preparing omnibus"
-        yum install -q -y git2u xz rpm-build fakeroot createrepo
+        yum install -q -y git2u xz rpm-build fakeroot createrepo python27
         mkdir -p /var/lib/bundle
         mount -o bind /var/lib/bundle /vagrant/.bundle
         cd /vagrant
