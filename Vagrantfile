@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         export DEBIAN_FRONTEND=noninteractive
         curl -#LO https://rvm.io/mpapis.asc
         gpg --import mpapis.asc
-        curl -sSL https://get.rvm.io | bash -s stable --ruby
+        curl -sSL https://raw.githubusercontent.com/rvm/rvm/stable/binscripts/rvm-installer | bash -s stable --ruby
         source /usr/local/rvm/scripts/rvm
         rvm use ruby --default
         gem install bundler
@@ -50,7 +50,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         echo "Installing rvm and ruby"
         curl -#LO https://rvm.io/mpapis.asc
         gpg --import mpapis.asc
-        curl -sSL https://get.rvm.io | bash -s stable --ruby
+        curl -sSL https://raw.githubusercontent.com/rvm/rvm/stable/binscripts/rvm-installer | bash -s stable --ruby
         source /usr/local/rvm/scripts/rvm
         rvm use ruby --default
         gem install bundler
