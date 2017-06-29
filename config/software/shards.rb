@@ -1,5 +1,7 @@
+SHARDS_VERSION = ENV['CRYSTAL_SHARDS_VERSION'] || "0.7.1"
+
 name "shards"
-default_version "0.7.1"
+default_version SHARDS_VERSION
 
 dependency "crystal"
 dependency "libyaml"
