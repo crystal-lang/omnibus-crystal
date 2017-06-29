@@ -1,12 +1,8 @@
-1. Download crystal from GitHub and place it as crystal-darwin-x86_64, crystal-linux-x86_64 and crystal-linux-i686
-2. Change default_version in ./config/software/crystal.rb
-3. Change default_version in ./config/software/shards.rb
-4. Follow the uncommented procedures described in each of the release_*.sh files
-5. Upload pkg/... to GitHub.
-6. Run the other procedures of each of the release_*.sh files
-7. Run ./dist/sync.sh
-8. Change version and shasum in homembrew_crystal project.
-9. Update docker image
-
-Note: If the initial build fails with git complaining there's no HEAD, remove the llvm_bin dependency
-from config/software/crystal.rb, run the build again and let fail and then undo the changes and try again.
+1. Edit `prepare_release.bash` to update the `CRYSTAL_PREVIOUS_VERSION`, `CRYSTAL_RELEASE_VERSION` and `CRYSTAL_SHARDS_VERSION` variables
+2. Get a working OSX El Capitan Vagrant box named `osx-el-capitan`. [This tutorial](https://spin.atomicobject.com/2015/11/17/vagrant-osx/) has proved helpful for that.
+3. Run `./prepare_release.bash`. This will take really long, and ask you your GPG passphrase a couple of times.
+4. Upload the 3 `.tar.gz`s and the `.pkg` files in `pkg/` to the Github Release page.
+5. Run `./dist/sync` to publish the Debian repo.
+6. Send a PR updating [crystal-lang's Homebrew formula](https://github.com/Homebrew/homebrew-core/edit/master/Formula/crystal-lang.rb).
+7. Update docker image
+8. 🎉🎉🎉

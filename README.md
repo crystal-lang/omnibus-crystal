@@ -1,5 +1,10 @@
 crystal Omnibus project
 =======================
+
+> **Hi there!** This README.md doesn't seem useful as is. If you're trying to
+> make a new Crystal release, please see [HowToRelease.md](HowToRelease.md).
+> We'll _eventually_ update the README with that info - but not today
+
 This project creates full-stack platform-specific packages for
 `crystal`!
 
