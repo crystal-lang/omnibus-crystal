@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  [%w(debian bento/debian-7.8), %w(debian32 bento/debian-7.8-i386)].each do |name, box|
+  [%w(debian bento/debian-8.7), %w(debian32 bento/debian-8.7-i386)].each do |name, box|
     config.vm.define(name) do |c|
       c.vm.box = box
 
