@@ -10,7 +10,7 @@ build_iteration 1
 
 dependency 'crystal'
 dependency 'shards'
-dependency 'tgz_package' if mac_os_x? || centos?
+dependency 'tgz_package'
 
 exclude '\.git*'
 exclude 'bundler\/git'
