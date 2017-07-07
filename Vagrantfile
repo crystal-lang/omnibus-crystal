@@ -41,7 +41,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         set -e
         echo "Installing Homebrew"
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        brew install gpg openssl
+        brew install gpg openssl cmake
         echo "Installing rvm and ruby"
         curl -#LO https://rvm.io/mpapis.asc
         gpg --import mpapis.asc
