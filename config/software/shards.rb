@@ -17,5 +17,6 @@ build do
           " build" \
           " -o #{install_dir}/embedded/bin/shards" \
           " src/shards.cr" \
+          " --no-debug" \
           " --release ", env: env
 end
