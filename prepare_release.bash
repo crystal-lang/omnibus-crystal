@@ -1,11 +1,11 @@
 #!/bin/bash -e
 # TODO: make parameter
 CRYSTAL_PREVIOUS_VERSION="0.22.0"
-export CRYSTAL_RELEASE_VERSION="0.23.0"
+export CRYSTAL_RELEASE_VERSION="0.23.1"
 export CRYSTAL_SHARDS_VERSION="0.7.1"
 
 COMPILER_ARCHITECTURES="darwin-x86_64 linux-x86_64 linux-i686"
-TARGET_PLATFORMS=${TARGET_PLATFORMS:-"debian debian32 darwin"}
+TARGET_PLATFORMS=${TARGET_PLATFORMS:-"debian debian32 centos centos32 darwin"}
 
 # TODO: Clean pkg/ here?
 
