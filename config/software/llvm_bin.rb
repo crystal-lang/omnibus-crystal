@@ -1,14 +1,14 @@
 name "llvm_bin"
-default_version "3.8.1-3"
+default_version "3.8.1-5"
 
 if linux?
   if _64_bit?
-    source_md5 = "937e9935a1bf5e22f05770e4ab9b58ee"
+    source_md5 = "caad082be8d516e1b8c8c097697bcbf6"
   else
-    source_md5 = "965b851e3ff7fbbc4bf487a4f3158b38"
+    source_md5 = "98e6e61609b90440a7e374f50a410af7"
   end
 elsif mac_os_x? && _64_bit?
-  source_md5 = "750bf46f4610996b2fbffb3fcffc42ec"
+  source_md5 = "15940cbab428468f24fcd93e3b773d09"
 end
 
 source url: "http://crystal-lang.s3.amazonaws.com/llvm/llvm-#{version}-#{ohai['os']}-#{ohai['kernel']['machine']}.tar.gz",
