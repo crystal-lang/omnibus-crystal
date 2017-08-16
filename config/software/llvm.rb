@@ -17,6 +17,7 @@ llvm_build_dir = "#{build_dir}/build-llvm"
 build do
   mkdir llvm_build_dir
   command "cmake" \
+    " -DCMAKE_BUILD_TYPE=MinSizeRel" \
     " -DLLVM_TARGETS_TO_BUILD=X86" \
     " -DLLVM_ENABLE_TERMINFO=OFF" \
     " -DLLVM_ENABLE_FFI=OFF" \
@@ -26,7 +27,7 @@ build do
     " -DLLVM_BINARY_DIR=#{install_dir}" \
     " -DBUILD_SHARED_LIBS=OFF" \
     " -DLLVM_OPTIMIZED_TABLEGEN=ON" \
-    " -DLLVM_ENABLE_ASSERTIONS=OFF" \
+    " -DLLVM_ENABLE_ASSERTIONS=ON" \
     "#{' -DPYTHON_EXECUTABLE=$(which python2.7)' if centos? }"\
     " #{project_dir}", env: env, cwd: llvm_build_dir
   command "cmake --build .", env: env, cwd: llvm_build_dir
