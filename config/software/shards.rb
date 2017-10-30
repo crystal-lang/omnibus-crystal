@@ -1,4 +1,4 @@
-SHARDS_VERSION = ENV['CRYSTAL_SHARDS_VERSION'] || "0.7.1"
+SHARDS_VERSION = "0.7.2"
 
 name "shards"
 default_version SHARDS_VERSION
@@ -7,7 +7,7 @@ dependency "crystal"
 dependency "libyaml"
 
 source url: "https://github.com/ysbaddaden/shards/archive/v#{version}.tar.gz",
-       md5: "ab38cb47e97f93ffd7960dbcca33b5d6"
+       md5: "4f1f1e860ed1846fce01581ce9e6e7ad"
 
 relative_path "shards-#{version}"
 env = with_standard_compiler_flags(with_embedded_path)
