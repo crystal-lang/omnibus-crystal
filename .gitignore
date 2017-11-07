@@ -10,3 +10,5 @@ files/**/cache/
 vendor/cookbooks
 dist/apt/
 dist/rpm/
+/crystal-*
+
